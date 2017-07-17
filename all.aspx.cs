@@ -9,6 +9,11 @@ public partial class all : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if (Session["userName"] == null)
+        {
+            Response.Write("<script>alert('请登录');</script>");
+            Response.Redirect("login_in.aspx");
+        }
     }
-}
+   
+} 

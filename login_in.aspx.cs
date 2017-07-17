@@ -10,6 +10,7 @@ public partial class login_in : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        
 
     }
     public void logini()
@@ -28,7 +29,12 @@ public partial class login_in : System.Web.UI.Page
             lblMessage.Text = "登录成功";//调试语句，正式使用时删除
             Session["userName"] = TextBox1.Text;
             Session["password"] = TextBox2.Text;
-            //Response.Write("<script>alert('登录成功');location.href='../secure/report/test2.aspx';</script>");  
+            Response.Write("<script>alert('登录成功');location.href='index.aspx';</script>");
+
+            //创建session
+            Session["n"] = 1;
+            Session["namx"] = 1;
+            Session["bh"] = 1;
         }
         else
         {

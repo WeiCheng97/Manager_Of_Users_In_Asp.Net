@@ -77,6 +77,6 @@
     </div>
 
     <asp:Label ID="lblMessage" runat="server"></asp:Label>
-    </form>  
+  
 </body>
 </html>
