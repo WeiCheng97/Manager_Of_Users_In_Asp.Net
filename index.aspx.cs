@@ -107,18 +107,19 @@ public partial class index : System.Web.UI.Page
     {
         SqlConnection conn = new SqlConnection(constr);
         conn.Open();
+        int bh = (int)Session["bh"];
         string sql = "insert into fp(bh,yhh,yhch,fpmc,fpdz,yjmc,yjdz,sjr,yb,rq) values(@bh,@yhh,@yhch,@fpmc,@fpdz,@yjmc,@yjdz,@sjr,@yb,@rq)";
         SqlCommand comm = new SqlCommand(sql, conn);
-        comm.Parameters.Add("bh", (int)Session["bh"]);
-        comm.Parameters.Add("yhh", dr["yhh"].ToString());
-        comm.Parameters.Add("yhch", dr["yhch"].ToString());
-        comm.Parameters.Add("fpmc", dr["yjmc"].ToString());
-        comm.Parameters.Add("fpdz", dr["fpdz"].ToString());
-        comm.Parameters.Add("yjmc", dr["yjmc"].ToString());
-        comm.Parameters.Add("yjdz", dr["yjdz"].ToString());
-        comm.Parameters.Add("sjr", dr["sjr"].ToString());
-        comm.Parameters.Add("yb", dr["yb"].ToString());
-        comm.Parameters.Add("rq", In_Date.Text);
+        comm.Parameters["@bh"].Value = bh.ToString();
+        comm.Parameters["@yhh"].Value = dr["yhh"].ToString();
+        comm.Parameters["@yhch"].Value = dr["yhch"].ToString();
+        comm.Parameters["@fpmc"].Value = dr["yjmc"].ToString();
+        comm.Parameters["@fpdz"].Value = dr["fpdz"].ToString();
+        comm.Parameters["@yjmc"].Value = dr["yjmc"].ToString();
+        comm.Parameters["@yjdz"].Value = dr["yjdz"].ToString();
+        comm.Parameters["@sjr"].Value = dr["sjr"].ToString();
+        comm.Parameters["@yb"].Value = dr["yb"].ToString();
+        comm.Parameters["@rq"].Value = In_Date.Text;
         Session["bh"] = (int)Session["bh"] + 1;
         if(comm.ExecuteNonQuery()==0)
             Response.Write("<script>alert('错误代码001');</script>");
